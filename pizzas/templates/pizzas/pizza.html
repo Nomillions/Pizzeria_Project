@@ -1,15 +1,42 @@
 {% extends "pizzas/base.html" %}
 {% block content %}
-<p>Pizza: {{pizza}}</p>
-<ul>
-    {% for topping in toppings %}
-    <li>
-        <p>{{ topping.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ topping.text|linebreaks }}</p>
-    </li>
-    {% empty %}
-    <li>There are no toppings assigned for this pizza yet! Give our chefs some suggestions!</li>
+
+<h1 style="font-family: Optima;font-size: 65px;text-align: center; background-color: rgb(236, 158, 106);">{{pizza}}
+</h1>
+
+
+<body style="background-color: rgb(255, 206, 115)">
+</body>
+
+
+<div style=" float: left; width: 20%;"><img style='border:10px solid #000000;' src="{{ pizza.image }}" width="300px"
+        height="300px"></div>
+
+<div style="float: left;width: 20%;">
+    <h2 style="font-family: Optima;font-size: 35px;">Pizza Ingredients</h2>
+    <ul>
+        {% for topping in toppings %}
+        <li>
+            <p style=" font-family: Optima;font-size: 20px;">{{ topping.name }}</p>
+            <p>{{ topping.text|linebreaks }}</p>
+        </li>
+        {% empty %}
+        <li>There are no toppings assigned for this pizza yet! Give our chefs some suggestions!</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div style=" float: left;width: 30%;">
+    <h3 style="font-family: Optima;font-size: 35px;">Let us know how we did!</h3>
+    {% for comment in comments %}
+    <p style="font-family: Optima;"> {{ comment }} --- {{ comment.date_added }}</p>
     {% endfor %}
-</ul>
+    <form action=" {% url 'pizzas:pizza' pizza.id %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Add your Feedback!</button>
+    </form>
+</div>
+
 
 {% endblock content %}

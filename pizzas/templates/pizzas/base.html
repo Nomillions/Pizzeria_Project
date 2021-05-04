@@ -1,8 +1,11 @@
-<p>
-    <a href="{% url 'pizzas:index' %}">Home</a>
-    <a href="{% url 'pizzas:pizzas' %}">Pizza Collection</a>
+<p style="background-color: rgb(236, 158, 106);font-size: 25px; text-align: right;">
+    <a href="{% url 'pizzas:index' %}"><img
+            src="https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/black_repicthousebase_1484336385-1.png"
+            width="40px" height="40px">Home </a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="{% url 'pizzas:pizzas' %}"><img src="https://image.flaticon.com/icons/png/512/340/340657.png
+        " width="40px" height="40px">Menu</a>
 </p>
-
 
 {% block content %}
 {% endblock content %}

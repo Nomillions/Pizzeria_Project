@@ -1,17 +1,25 @@
 {% extends "pizzas/base.html" %}
-
 {% block content %}
+<html>
 
-<p>Pizzas</p>
+<body style="background-color: rgb(255, 206, 115)">
+</body>
 
-<ul>
-    {% for pizza in pizzas %}
-    <li>
-        <a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a>
-    </li>
+<h1 style="font-family: Optima;font-size: 65px;text-align: center; background-color: rgb(236, 158, 106);">The Pizza
+    Collection</h1>
+
+<ul style="font-family: Optima;text-align: center;">
+    {% for p in pizzas %}
+    <p style="font-family: Optima;font-size: 45px;text-align: left;">
+
+        <a href=" {% url 'pizzas:pizza' p.id %}" style="font-family: Optima;text-align: center;"><img
+                style='border:2px solid #000000;' src="{{ p.image }}" width="175px" height="175px">{{ p }}</a>
+    </p>
     {% empty %}
-    <li>No pizzas have been cooked yet. Please allow for our team to adjust the menu</li>
+    <li>No pizzas have been cooked yet. Please allow for our team to adjust the menu!</li>
     {% endfor %}
 </ul>
+</body>
 
+</html>
 {% endblock content %}
